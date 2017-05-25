@@ -1,0 +1,56 @@
+<button type="button" class="btn btn-primary top-button" ng-click="newsListCtrl.openAdd()"
+        translate="PUBLISH"></button>
+<div class="text-center" ng-show="newsListCtrl.newsList.length > 0">
+    <ul class="text-center" boundary-links="true" previous-text="<" next-text=">"
+        uib-pagination items-per-page="newsListCtrl.itemsPerPage" max-size="newsListCtrl.maxSize"
+        total-items="newsListCtrl.totalCount" ng-model="newsListCtrl.pageNumber"
+        ng-change="newsListCtrl.pageChanged()" first-text="<<"
+        last-text=">>"></ul>
+</div>
+<div class="clearfix add-div text-center" ng-show="newsListCtrl.newsList.length > 0">
+    <form>
+        <label for="pageCount" class="well-sm well" translate="NEWS_PER_PAGE"></label>
+        <select id="pageCount" ng-model="newsListCtrl.limit" ng-change="newsListCtrl.changeNumberOfNewsPerPage()">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+    </form>
+</div>
+
+<div class="well news-well container-fluid"
+     ng-repeat="news in newsListCtrl.newsList">
+    <h3>
+        <a ui-sref='news({id: news.id})'>{{news.title}}</a>
+        <br/>
+        <small>
+            <span translate="CREATION_TIME"></span>: {{news.creationTime | newsHubDateFilter}} <span
+                ng-attr-title="{{'MODIFICATION_TIME' | translate}}: {{news.lastModificationTime ? (news.lastModificationTime | newsHubDateFilter) : ('NOT_MODIFIED' | translate)}}"
+                ng-show="news.lastModificationTime" class="glyphicon glyphicon-edit">
+                      </span>
+        </small>
+        <br/>
+        <small translate="COMMENTS_COUNT"></small>
+        :
+        <small>{{news.commentsCount}}</small>
+    </h3>
+    <div class="description">
+        <p class="text-area">{{news.description}}</p>
+    </div>
+    <hr/>
+    <div class="clearfix">
+        <button type="button" class="btn btn-primary btn-left" ng-click="newsListCtrl.openDelete(news)"
+                translate="DELETE"></button>
+        <button type="button" class="btn btn-primary btn-right" ng-click="newsListCtrl.openEdit(news)"
+                translate="EDIT"></button>
+
+    </div>
+</div>
+<div class="text-center" ng-show="newsListCtrl.newsList.length > 0">
+    <ul class="text-center" boundary-links="true" previous-text="<" next-text=">"
+        uib-pagination items-per-page="newsListCtrl.itemsPerPage" max-size="newsListCtrl.maxSize"
+        total-items="newsListCtrl.totalCount" ng-model="newsListCtrl.pageNumber"
+        ng-change="newsListCtrl.pageChanged()" first-text="<<"
+        last-text=">>"></ul>
+</div>

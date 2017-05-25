@@ -1,0 +1,11 @@
+<div class="modal-header">
+    <h4 class="modal-title" translate="INFO"></h4>
+</div>
+<div class="modal-body">
+    <p ng-if="infoCtrl.translateInfo" class="text-area">{{infoCtrl.translateInfo | translate}}</p>
+    <p ng-if="infoCtrl.info" class="text-area">{{infoCtrl.info}}</p>
+</div>
+<div class="modal-footer text-center">
+    <button type="button" class="btn btn-primary"
+            ng-click="infoCtrl.close()" translate="OK"></button>
+</div>

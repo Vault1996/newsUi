@@ -1,0 +1,56 @@
+<button id ="commentStart" type="button" class="btn btn-primary top-button" ng-click="newsCommentsCtrl.hideComments()"
+        translate="HIDE_COMMENTS"></button>
+<div class="well news-well container-fluid">
+    <h3 translate="ADD_COMMENT"></h3>
+    <form name="addForm">
+        <div class="clearfix">
+            <div class="form-group">
+                <div class="validation" ng-show="addForm.comment.$invalid && addForm.comment.$dirty"
+                     translate="COMMENT_ERROR"></div>
+                <div>
+					<textarea class="form-control"
+                              ng-model="newsCommentsCtrl.commentToAdd.text" rows="3"
+                              id="comment" name="comment" ng-attr-placeholder="{{'COMMENT_TEXT' | translate}}"
+                              required maxlength="300" ng-maxlength="300">
+                    </textarea>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="clearfix">
+        <button type="button" class="btn btn-primary btn-right" ng-disabled="addForm.$invalid"
+                ng-click="newsCommentsCtrl.addComment(addForm)" translate="ADD_COMMENT_BTN">
+        </button>
+    </div>
+</div>
+<div ng-show="newsCommentsCtrl.comments.length > 0" class="text-center">
+    <ul class="text-center" boundary-links="true" previous-text="<" next-text=">"
+        uib-pagination items-per-page="newsCommentsCtrl.itemsPerPage" max-size="newsCommentsCtrl.maxSize"
+        total-items="newsCommentsCtrl.totalCount" ng-model="newsCommentsCtrl.pageNumber"
+        ng-change="newsCommentsCtrl.pageChanged()" first-text="<<"
+        last-text=">>"></ul>
+</div>
+<div class="well news-well container-fluid"
+     ng-repeat="comment in newsCommentsCtrl.comments">
+    <h3>
+        <small>
+            <span translate="CREATION_TIME"></span>: {{comment.creationTime | newsHubDateFilter}}
+        </small>
+    </h3>
+    <div class="description">
+        <p class="text-area">{{comment.text}}</p>
+    </div>
+    <div class="clearfix">
+        <button type="button" class="btn btn-primary btn-left" ng-click="newsCommentsCtrl.openEdit(comment)"
+                translate="EDIT"></button>
+        <button type="button" class="btn btn-primary btn-right" ng-click="newsCommentsCtrl.openDelete(comment)"
+                translate="DELETE"></button>
+    </div>
+</div>
+<div ng-show="newsCommentsCtrl.comments.length > 0" class="text-center">
+    <ul class="text-center" boundary-links="true" previous-text="<" next-text=">"
+        uib-pagination items-per-page="newsCommentsCtrl.itemsPerPage" max-size="newsCommentsCtrl.maxSize"
+        total-items="newsCommentsCtrl.totalCount" ng-model="newsCommentsCtrl.pageNumber"
+        ng-change="newsCommentsCtrl.pageChanged()" first-text="<<"
+        last-text=">>"></ul>
+</div>

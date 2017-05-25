@@ -1,0 +1,204 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.compulsory::after {
+    content: "*";
+    color: red;
+}
+
+.news-well {
+    box-shadow: 0 0 10px gray;
+    border-radius: 5px;
+    padding: 20px 40px;
+    margin: 10px auto;
+    opacity: 0.9;
+}
+
+body {
+    background-image: url("../public/img/newshub_wallpaper.jpg");
+
+    font-family: 'Open Sans', Arial, sans-serif;
+    color: #3c3c3c;
+
+    font-size: 16px;
+    line-height: 1.42857143;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+textarea {
+    resize: none;
+}
+
+/*--------------------------*/
+.navbar {
+    margin-bottom: 0;
+    border-radius: 5px;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 70px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    padding: 15px;
+    height: 60px;
+    color: white;
+    background-color: #555;
+    z-index: 100;
+}
+
+.top-button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.description {
+    font-style: italic;
+    font-size: 18px;
+}
+
+.fullText {
+    font-weight: bold;
+    font-style: italic;
+}
+
+label {
+    display: block;
+}
+
+tags-input.ng-invalid .tags {
+    box-shadow: none;
+}
+
+input.ng-invalid.ng-dirty, textarea.ng-invalid.ng-dirty, tags-input.ng-invalid.ng-dirty .tags {
+    box-shadow: 0 0 3px 1px rgba(255, 0, 0, 0.6);
+}
+
+div.validation {
+    font-style: italic;
+    font-size: 12px;
+}
+
+h3 {
+    margin-top: 5px;
+}
+.btn-left {
+    float: left
+}
+.btn-right {
+    float: right;
+    margin-right: 5px;
+}
+p.text-area {
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    overflow-x: auto;
+}
+.side-nav {
+    height: 100%;
+    position: fixed;
+    background-color: #286090;
+    color: floralwhite;
+    padding-top: 65px;
+    padding-bottom: 65px;
+    box-sizing: border-box;
+}
+
+div.content {
+    padding-left: 0;
+    padding-right: 0;
+}
+html {
+    overflow: -moz-scrollbars-vertical;
+    overflow-y: scroll;
+}
+.well.well-sm {
+    padding: 2px;
+    margin-bottom: 2px;
+    color: black;
+    display: block;
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+
+.add-div {
+    color: black;
+    margin-bottom: 4px;
+}
+
+div.contain {
+    height: 60%;
+    overflow-y: scroll;
+}
+
+.contain > table {
+    width: 95%;
+}
+
+.right-text {
+    text-align: right;
+}
+
+.text-select {
+    cursor: pointer;
+    text-decoration: underline;
+    display: block;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow-x: hidden;
+    width: 150%;
+}
+
+.tags-div {
+    height: 47%;
+    border-bottom: solid 2px #f5f5f5;
+}
+
+.authors-div {
+    height: 47%;
+}
+input.cut {
+    padding: 0 2px;
+}
+
+.tag-btn {
+    margin-right: 2px;
+    margin-bottom: 2px;
+}
+
+.add-btn {
+    font-weight: bold;
+}
+
+.fixed-table {
+    table-layout: fixed;
+}
+
+.half-width {
+    width: 50%;
+}
+
+.navbar-right {
+    float: right!important;
+}

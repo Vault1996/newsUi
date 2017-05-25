@@ -1,0 +1,40 @@
+<div class="text-center tags-div">
+    <h3 translate="TAGS"></h3>
+    <div class="clearfix add-div">
+        <form id="addTagForm" name="addTagForm">
+            <input class="col-xs-9 cut" name="tagName" maxlength="30" required ng-maxlength="30" type="text"
+                   ng-model="newsSidebarCtrl.tagToAdd.name" placeholder="{{'ADD_NEW_TAG' | translate}}"/>
+            <button class="col-xs-3 add-btn" ng-disabled="addTagForm.$invalid" ng-click="newsSidebarCtrl.addTag(addTagForm)" translate="ADD"></button>
+        </form>
+    </div>
+    <div class="contain">
+        <table class="text-center fixed-table" align="center">
+            <tr ng-repeat="tag in newsSidebarCtrl.tags | orderBy: '-tag.newsCount'">
+                <td class="text-select" ng-click="newsSidebarCtrl.searchTag(tag)" title="{{tag.name}}">
+                    {{tag.name}}
+                </td>
+                <td class="right-text half-width">{{tag.newsCount}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="text-center authors-div">
+    <h3 translate="AUTHORS"></h3>
+    <div class="clearfix add-div">
+        <form id="addAuthorForm" name="addAuthorForm">
+            <input class="col-xs-9 cut" name="authorName" maxlength="100" required ng-maxlength="100" type="text"
+                   ng-model="newsSidebarCtrl.authorToAdd.name" placeholder="{{'ADD_NEW_AUTHOR' | translate}}"/>
+            <button class="col-xs-3 add-btn" ng-disabled="addAuthorForm.$invalid" ng-click="newsSidebarCtrl.addAuthor(addAuthorForm)" translate="ADD"></button>
+        </form>
+    </div>
+    <div class="contain">
+        <table class="text-center fixed-table" align="center">
+            <tr ng-repeat="author in newsSidebarCtrl.authors | orderBy: '-author.newsCount'">
+                <td ng-click="newsSidebarCtrl.searchAuthor(author)" class="text-select" title="{{author.name}}">
+                    {{author.name}}
+                </td>
+                <td class="right-text half-width">{{author.newsCount}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

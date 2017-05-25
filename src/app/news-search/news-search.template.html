@@ -1,0 +1,62 @@
+<button type="button" class="btn btn-primary top-button" ng-click="newsSearchCtrl.backToNewsList()"
+        translate="BACK_TO_LIST"></button>
+<div class="well news-well">
+    <span translate="SEARCHED_TAGS"></span>
+    <div>
+        <button ng-repeat="tag in newsSearchCtrl.searchReq.tags"
+                ng-click="newsSearchCtrl.deleteTagFromRequest(tag)" class="tag-btn">{{tag.name}}
+        </button>
+    </div>
+    <br/>
+    <span translate="SEARCHED_AUTHORS"></span>
+    <div>
+        <button ng-repeat="author in newsSearchCtrl.searchReq.authors"
+                ng-click="newsSearchCtrl.deleteAuthorFromRequest(author)" class="tag-btn">{{author.name}}
+        </button>
+    </div>
+</div>
+<div class="text-center" ng-show="newsSearchCtrl.newsList.length > 0">
+    <ul class="text-center" boundary-links="true" previous-text="<" next-text=">"
+        uib-pagination items-per-page="newsSearchCtrl.itemsPerPage" max-size="newsSearchCtrl.maxSize"
+        total-items="newsSearchCtrl.totalCount" ng-model="newsSearchCtrl.pageNumber"
+        ng-change="newsSearchCtrl.pageChanged()" first-text="<<"
+        last-text=">>"></ul>
+</div>
+<div ng-show="newsSearchCtrl.newsList.length > 0" class="clearfix add-div text-center">
+    <form>
+        <label for="pageCount" class="well-sm well" translate="NEWS_PER_PAGE"></label>
+        <select id="pageCount" ng-model="newsSearchCtrl.limit" ng-change="newsSearchCtrl.changeNumberOfNewsPerPage()">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+    </form>
+</div>
+<div class="well news-well container-fluid"
+     ng-repeat="news in newsSearchCtrl.newsList ">
+    <h3>
+        <a ui-sref='news({id: news.id})'>{{news.title}}</a>
+        <br/>
+        <small>
+            <span translate="CREATION_TIME"></span>: {{news.creationTime | newsHubDateFilter}} <span
+                ng-attr-title="{{'MODIFICATION_TIME' | translate}}: {{news.lastModificationTime ? (news.lastModificationTime | newsHubDateFilter) : ('NOT_MODIFIED' | translate)}}"
+                ng-show="news.lastModificationTime" class="glyphicon glyphicon-edit">
+                      </span>
+        </small>
+        <br/>
+        <small translate="COMMENTS_COUNT"></small>
+        :
+        <small>{{news.commentsCount}}</small>
+    </h3>
+    <div class="description">
+        <p class="text-area">{{news.description}}</p>
+    </div>
+</div>
+<div class="text-center" ng-show="newsSearchCtrl.newsList.length > 0">
+    <ul class="text-center" boundary-links="true" previous-text="<" next-text=">"
+        uib-pagination items-per-page="newsSearchCtrl.itemsPerPage" max-size="newsSearchCtrl.maxSize"
+        total-items="newsSearchCtrl.totalCount" ng-model="newsSearchCtrl.pageNumber"
+        ng-change="newsSearchCtrl.pageChanged()" first-text="<<"
+        last-text=">>"></ul>
+</div>

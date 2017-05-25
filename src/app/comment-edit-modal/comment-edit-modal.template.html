@@ -1,0 +1,26 @@
+<div class="modal-header">
+    <h4 class="modal-title" translate="EDIT"></h4>
+</div>
+<form name="editForm">
+    <div class="modal-body">
+        <div class="clearfix">
+            <div class="form-group">
+                <div class="validation" ng-show="editForm.comment.$invalid && editForm.comment.$dirty"
+                     translate="COMMENT_ERROR"></div>
+                <div>
+					<textarea class="form-control"
+                              ng-model="editCommentCtrl.commentToEdit.text" rows="6"
+                              id="comment" name="comment" ng-attr-placeholder="{{'COMMENT_TEXT' | translate}}"
+                              required maxlength="300" ng-maxlength="300">
+                    </textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="modal-footer clearfix">
+    <button type="button" class="btn btn-primary btn-left" ng-disabled="editForm.$invalid"
+            ng-click="editCommentCtrl.edit(editForm)" translate="SAVE"></button>
+    <button type="button" class="btn btn-primary btn-right"
+            ng-click="editCommentCtrl.close()" translate="CANCEL"></button>
+</div>

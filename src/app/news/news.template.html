@@ -1,0 +1,42 @@
+<div class="well news-well container-fluid">
+    <h2>
+        {{newsCtrl.news.title}}
+        <br/>
+        <small>
+            <span translate="CREATION_TIME"></span>: {{newsCtrl.news.creationTime | newsHubDateFilter}} <span
+                ng-attr-title="{{'MODIFICATION_TIME' | translate}}: {{newsCtrl.news.lastModificationTime ? (newsCtrl.news.lastModificationTime | newsHubDateFilter) : ('NOT_MODIFIED' | translate)}}"
+                ng-show="newsCtrl.news.lastModificationTime" class="glyphicon glyphicon-edit"></span>
+        </small>
+    </h2>
+    <div ng-show="newsCtrl.news.tags.length > 0">
+        <span translate="TAGS"></span><span>:</span>
+        <button ng-disabled="true" ng-repeat="tag in newsCtrl.news.tags" class="tag-btn">
+            {{tag.name}}
+        </button>
+    </div>
+
+    <div ng-show="newsCtrl.news.authors.length > 0">
+        <span translate="AUTHORS"></span><span>:</span>
+        <button ng-disabled="true" ng-repeat="author in newsCtrl.news.authors" class="tag-btn">
+            {{author.name}}
+        </button>
+    </div>
+    <hr>
+    <div class="fullText">
+        <p class="text-area">{{newsCtrl.news.fullText}}</p>
+    </div>
+    <hr/>
+    <div class="clearfix">
+        <button ui-sref="newsList" type="button" class="btn btn-primary btn-left"
+                translate="BACK_TO_MAIN_PAGE"></button>
+        <button type="button" class="btn btn-primary btn-right" ng-click="newsCtrl.openDelete()"
+                translate="DELETE"></button>
+        <button type="button" class="btn btn-primary btn-right" ng-click="newsCtrl.openEdit()"
+                translate="EDIT"></button>
+
+    </div>
+</div>
+<button type="button" ng-show="newsCtrl.show" class="btn btn-primary top-button"
+        ng-click="newsCtrl.showComments()"
+        translate="SHOW_COMMENTS"></button>
+<ui-view></ui-view>

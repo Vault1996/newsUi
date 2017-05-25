@@ -1,0 +1,75 @@
+<div class="modal-header">
+    <h4 class="modal-title" translate="PUBLISH"></h4>
+</div>
+<form name="addForm">
+    <div class="modal-body">
+        <div class="clearfix">
+            <div class="form-group">
+                <label for="tags" class="control-label" translate="TAGS"></label>
+                <div class="validation" ng-show="addForm.tags.$invalid && addForm.tags.$dirty"
+                     translate="TAGS_ERROR"></div>
+                <div>
+                    <tags-input id="tags" name="tags" min-length="1" ng-model="addCtrl.newsToAdd.tags" display-property="name"
+                                add-from-autocomplete-only="true" placeholder="{{'ADD_NEW_TAG' | translate}}">
+                        <auto-complete source="addCtrl.loadTags($query)" min-length="1"
+                                       max-results-to-show="7"></auto-complete>
+                    </tags-input>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label compulsory" translate="AUTHORS"></label>
+                <div class="validation" ng-show="addForm.authors.$invalid && addForm.authors.$dirty"
+                     translate="AUTHORS_ERROR"></div>
+                <div>
+                    <tags-input id="authors" name="authors" min-tags="1" min-length="1" ng-model="addCtrl.newsToAdd.authors"
+                                display-property="name"
+                                add-from-autocomplete-only="true" placeholder="{{'ADD_NEW_AUTHOR' | translate}}">
+                        <auto-complete source="addCtrl.loadAuthors($query)" min-length="1"
+                                       max-results-to-show="7"></auto-complete>
+                    </tags-input>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="title" class="control-label compulsory" translate="TITLE"></label>
+                <div class="validation" ng-show="addForm.title.$invalid && addForm.title.$dirty"
+                     translate="TITLE_ERROR"></div>
+                <div>
+                    <input type="text" ng-model="addCtrl.newsToAdd.title"
+                           class="form-control" id="title" name="title"
+                           ng-attr-placeholder="{{ 'TITLE' | translate }}" required
+                           maxlength="100" ng-maxlength="100"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description" class="control-label compulsory" translate="DESCRIPTION"></label>
+                <div class="validation" ng-show="addForm.description.$invalid && addForm.description.$dirty"
+                     translate="DESCRIPTION_ERROR"></div>
+                <div>
+					<textarea class="form-control"
+                              ng-model="addCtrl.newsToAdd.description" rows="3" id="description" name="description"
+                              ng-attr-placeholder="{{'DESCRIPTION' | translate}}" required
+                              maxlength="300" ng-maxlength="300"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="fullText" class="control-label compulsory" translate="FULL_TEXT"></label>
+                <div class="validation" ng-show="addForm.fullText.$invalid && addForm.fullText.$dirty"
+                     translate="FULL_TEXT_ERROR"></div>
+                <div>
+					<textarea class="form-control"
+                              ng-model="addCtrl.newsToAdd.fullText" rows="7" id="fullText" name="fullText"
+                              ng-attr-placeholder="{{'FULL_TEXT' | translate }}" required
+                              maxlength="2000" ng-maxlength="2000"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="modal-footer clearfix">
+    <button type="button" class="btn btn-primary btn-left" ng-disabled="addForm.$invalid"
+            ng-click="addCtrl.add(addForm)" translate="PUBLISH"></button>
+    <button type="button" class="btn btn-primary btn-right"
+            ng-click="addCtrl.close()" translate="CANCEL"></button>
+</div>
